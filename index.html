@@ -175,11 +175,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为程序猿，我们经常需要和服务器打交道，我们在前端展示的大部分数据都需要从服务器取，而取数据的方式无外乎就是访问服务器给我们提供的接口了。为了调试，我们需要使用工具对接口进行测试，测试达到要求之后才在开发中调用。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在这里推荐大家一个个人比较看好的谷歌浏览器插件Postman，Postman是一款功能强大的网页调试与发送网页HTTP请求的Chrome插件。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;插件安装地址 <a href="https://chrome.google.com/webstore/search/postman?hl=zh-CN" target="_blank" rel="external">https://chrome.google.com/webstore/search/postman?hl=zh-CN</a> （需要科学上网）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不能科学上网的同学可以直接百度下载Postman插件，直接进行安装</p>
-<h3 id="界面样式"><a href="#界面样式" class="headerlink" title="界面样式"></a>界面样式</h3><p><img src="https://github.com/xudajun/collections/blob/master/images/postman.png?raw=true" alt="Postman界面" width="320px"><br>上图为Postman的界面样式，左侧红色框内为工具栏，可以查看接口请求历史和收藏的常访问的接口。右侧红色框内为请求使用编辑框。</p>
-<h3 id="请求示例"><a href="#请求示例" class="headerlink" title="请求示例"></a>请求示例</h3><p><img src="https://github.com/xudajun/collections/blob/master/images/postmanrequ.png?raw=true" alt="Postman请求示例" width="320px"><br>上图为Postman的请求示例 请求方式为GET请求，URL地址为 <a href="https://www.baidu.com/" target="_blank" rel="external">https://www.baidu.com/</a> 并无相关请求参数，请求时间为56ms，请求status为200（即执行成功）,返回结果为Html页面标签</p>
-<h3 id="完结"><a href="#完结" class="headerlink" title="完结"></a>完结</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上即为Postman的一些简单相关介绍。</p>
-
       
     </div>
     
@@ -192,6 +187,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/12/Http请求模拟工具/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -236,11 +235,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们在做项目页面的过程中，总会遇到页面加载失败，网络异常和数据为空的情况。为了提高用户体验，我们需要针对每一种状态展示相应的状态页面。但是如果在每个页面都添加这样的样式代码，不管是添加还是修改都过于繁琐。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LoadingView控件实现了一行代码切换状态。</p>
-<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LoadingView 是继承自ViewSwitcher，至于ViewSwitcher的用法。ViewSwitcher适用于两个View视图的切换（可以根据需要添加切换动画）。LoadingView将项目的几种共通状态整合添加为一个View。而将我们正常显示的View作为添加项来定义。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项目地址：<a href="https://github.com/xudajun/LoadingView/" target="_blank" rel="external">https://github.com/xudajun/LoadingView/</a> <br></p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>可以使用LoadingView作为页面的根布局（注意LoadingView下只能有一个layout）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;com.ivan.library.LoadingView xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    android:id=<span class="string">"@+id/loading"</span></span><br><span class="line">    android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">    android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">    android:orientation=<span class="string">"vertical"</span></span><br><span class="line">    app:icon_empty=<span class="string">"@mipmap/icon_empty"</span></span><br><span class="line">    app:icon_error=<span class="string">"@mipmap/icon_net_error"</span></span><br><span class="line">    app:icon_error_net=<span class="string">"@mipmap/icon_server_error"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;RelativeLayout</span><br><span class="line">        android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">        android:layout_height=<span class="string">"match_parent"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=<span class="string">"wrap_content"</span></span><br><span class="line">            android:layout_height=<span class="string">"wrap_content"</span></span><br><span class="line">            android:layout_centerInParent=<span class="string">"true"</span></span><br><span class="line">            android:text=<span class="string">"主页面"</span> /&gt;</span><br><span class="line">    &lt;/RelativeLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;/com.ivan.library.LoadingView&gt;</span><br></pre></td></tr></table></figure></p>
-<p>状态切换方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 加载中</span><br><span class="line">*/</span><br><span class="line">loading.setLoadingState(LoadingView.LOADING);</span><br><span class="line">/**</span><br><span class="line">* 加载失败(网络异常)</span><br><span class="line">*/</span><br><span class="line">loading.setLoadingState(LoadingView.NET_ERROR);</span><br><span class="line">/**</span><br><span class="line">* 加载出错(服务器或者其他错误)</span><br><span class="line">*/</span><br><span class="line">loading.setLoadingState(LoadingView.ERROR);</span><br><span class="line">/**</span><br><span class="line">* 数据为空</span><br><span class="line">*/</span><br><span class="line">loading.setLoadingState(LoadingView.EMPTY);</span><br><span class="line">/**</span><br><span class="line">* 加载成功，显示正常布局</span><br><span class="line">*/</span><br><span class="line">loading.setLoadingState(LoadingView.NORMAL);</span><br></pre></td></tr></table></figure></p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://github.com/xudajun/LoadingView/blob/master/app/screen/loadingview.png?raw=true" alt="效果展示"></p>
-
       
     </div>
     
@@ -253,6 +247,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/06/08/LoadingView/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
