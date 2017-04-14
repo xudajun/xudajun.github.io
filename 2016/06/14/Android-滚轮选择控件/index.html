@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android 滚轮选择控件 | 仨儿哥的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="序言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;闲来无事，想起之前做项目时有用到滚轮选择的控件，也从网上找了许多的开源方案，实现方式也是各式各样，但总感觉不太满意，大部分用到实际项目中的时候都有一定的问题。所以参考了大部分项目之后，准备自定义一个。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;此项目可以用来实现时间选择，地址选择等选择的功能（注">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 滚轮选择控件">
+<meta property="og:url" content="http://yoursite.com/2016/06/14/Android-滚轮选择控件/index.html">
+<meta property="og:site_name" content="仨儿哥的博客">
+<meta property="og:description" content="序言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;闲来无事，想起之前做项目时有用到滚轮选择的控件，也从网上找了许多的开源方案，实现方式也是各式各样，但总感觉不太满意，大部分用到实际项目中的时候都有一定的问题。所以参考了大部分项目之后，准备自定义一个。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;此项目可以用来实现时间选择，地址选择等选择的功能（注">
+<meta property="og:updated_time" content="2016-06-14T09:15:25.078Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 滚轮选择控件">
+<meta name="twitter:description" content="序言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;闲来无事，想起之前做项目时有用到滚轮选择的控件，也从网上找了许多的开源方案，实现方式也是各式各样，但总感觉不太满意，大部分用到实际项目中的时候都有一定的问题。所以参考了大部分项目之后，准备自定义一个。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;此项目可以用来实现时间选择，地址选择等选择的功能（注">
+  
+    <link rel="alternative" href="/atom.xml" title="仨儿哥的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://k1.jsqq.net/uploads/allimg/1612/140F5A32-6.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">仨儿哥</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">人生若只如初见，何事秋风悲画扇</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/控件/" style="font-size: 20px;">控件</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">仨儿哥</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://k1.jsqq.net/uploads/allimg/1612/140F5A32-6.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">仨儿哥</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">人生若只如初见，何事秋风悲画扇</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Android-滚轮选择控件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/14/Android-滚轮选择控件/" class="article-date">
+  	<time datetime="2016-06-14T08:00:56.000Z" itemprop="datePublished">2016-06-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android 滚轮选择控件
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/控件/">控件</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;闲来无事，想起之前做项目时有用到滚轮选择的控件，也从网上找了许多的开源方案，实现方式也是各式各样，但总感觉不太满意，大部分用到实际项目中的时候都有一定的问题。所以参考了大部分项目之后，准备自定义一个。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此项目可以用来实现时间选择，地址选择等选择的功能（注：项目并不实现联动的逻辑）。</p>
+<a id="more"></a>
+<h2 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本项目是通过继承ScrollView来实现滚动选择的。目前的Item只是支持TextView，而且目前并未添加XML样式支持。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ScrollView 相信大家都很熟悉了，此处不再多做介绍。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;给ScrollView添加一个LinearLayout。header为在LinearLayout顶部添加一个空白的布局，这样可以使得首个Item滑动到中间位置。footer同样可以使得末尾Item滑动到中间位置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">        container = new LinearLayout(getContext());</span><br><span class="line">        container.setOrientation(LinearLayout.VERTICAL);</span><br><span class="line">        this.addView(container);</span><br><span class="line">        header = new View(getContext());</span><br><span class="line">        footer = new View(getContext());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>滚轮滑动控制，通过监听ScrollView的触摸事件来控制滚动选择位置。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public boolean onTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">        switch (ev.getAction()) &#123;</span><br><span class="line">            <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">                postDelayed(new <span class="function"><span class="title">Runnable</span></span>() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">                        int scrollY = getScrollY();</span><br><span class="line">                        int position = scrollY / itemHeight;</span><br><span class="line">                        position += (scrollY % itemHeight &gt; itemHeight / 2 ? 1 : 0);</span><br><span class="line">                        handler.sendEmptyMessage(position);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, 100);</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> super.onTouchEvent(ev);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>为了使滑动过程显得平滑，项目通过监听Scrollview的滑动状态实时进行Item的内容更新。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int scrollY = getScrollY();</span><br><span class="line">        int position = scrollY / itemHeight;</span><br><span class="line">        position += (scrollY % itemHeight &gt; itemHeight / 2 ? 1 : 0);</span><br><span class="line">        int angle = 10 * (scrollY % itemHeight) / itemHeight;</span><br><span class="line">        <span class="keyword">if</span> (position != currentPosition) &#123;</span><br><span class="line">            currentPosition = position;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (int i = currentPosition - 3; i &lt; currentPosition + 4; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= 0 &amp;&amp; i &lt; data.size()) &#123;</span><br><span class="line">                TextView item = (TextView) container.getChildAt(i + 1);</span><br><span class="line">                <span class="keyword">if</span> (i != currentPosition) &#123;</span><br><span class="line">                    item.setTextColor(Color.parseColor(<span class="string">"#666666"</span>));</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    item.setTextColor(Color.parseColor(<span class="string">"#FF0000"</span>));</span><br><span class="line">                &#125;</span><br><span class="line">                item.setRotationX(20 * (currentPosition - i) - angle);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<p>为了使滚轮滑动效果更为逼真，故在列表滑动的过程中给Item及上下临近的TextView添加一个旋转角度。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">item.setRotationX(20 * (currentPosition - i) - angle);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/13/develop-resouce-android/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          开发资源整理Android篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/12/Http请求模拟工具/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Http请求模拟工具</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android-滚轮选择控件" data-title="Android 滚轮选择控件" data-url="http://yoursite.com/2016/06/14/Android-滚轮选择控件/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 仨儿哥
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
