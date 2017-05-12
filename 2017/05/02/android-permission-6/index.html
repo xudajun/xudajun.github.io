@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Android动态权限管理 | 仨儿哥的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="序言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;苦逼的加班生活终于要告一段落了，可以闲下来做一下最近工作中遇到的一些问题和相对应的解决方案。此篇文章主要用来记录Android6.0的权限管理。">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;苦逼的加班生活终于要告一段落了，可以闲下来做一下最近工作中遇到的一些问题和相对应的解决方案。此篇文章主要用来记录Android6.0的权限管理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android动态权限管理">
 <meta property="og:url" content="http://yoursite.com/2017/05/02/android-permission-6/index.html">
 <meta property="og:site_name" content="仨儿哥的博客">
-<meta property="og:description" content="序言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;苦逼的加班生活终于要告一段落了，可以闲下来做一下最近工作中遇到的一些问题和相对应的解决方案。此篇文章主要用来记录Android6.0的权限管理。">
-<meta property="og:updated_time" content="2017-05-02T10:05:29.840Z">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;苦逼的加班生活终于要告一段落了，可以闲下来做一下最近工作中遇到的一些问题和相对应的解决方案。此篇文章主要用来记录Android6.0的权限管理。">
+<meta property="og:updated_time" content="2017-05-03T02:18:42.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android动态权限管理">
-<meta name="twitter:description" content="序言&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;苦逼的加班生活终于要告一段落了，可以闲下来做一下最近工作中遇到的一些问题和相对应的解决方案。此篇文章主要用来记录Android6.0的权限管理。">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;苦逼的加班生活终于要告一段落了，可以闲下来做一下最近工作中遇到的一些问题和相对应的解决方案。此篇文章主要用来记录Android6.0的权限管理。">
   
     <link rel="alternative" href="/atom.xml" title="仨儿哥的博客" type="application/atom+xml">
   
@@ -165,9 +165,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;苦逼的加班生活终于要告一段落了，可以闲下来做一下最近工作中遇到的一些问题和相对应的解决方案。此篇文章主要用来记录Android6.0的权限管理。</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;苦逼的加班生活终于要告一段落了，可以闲下来做一下最近工作中遇到的一些问题和相对应的解决方案。此篇文章主要用来记录Android6.0的权限管理。</p>
 <a id="more"></a>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android从6.0之后开始出现动态权限的管理，虽然对用户来说是个不错的安全体验（控制客户端对系统隐私信息的访问），却加大了我们程序员的工作量，新的权限获取方式除了和之前一样需要在AndroidMainfest文件中静态申请外，<br>还需要在使用的地方动态的去先用户请求授权。当然这些权限也可以再系统设置的应用管理处手动的打开和关闭。当然，并不是所有的权限都需要动态的获取，NORMAL类的权限直接在AndroidMainfest中静态申请即可（例如网络权限）。这类权限包括：</p>
+<h3 id="权限介绍"><a href="#权限介绍" class="headerlink" title="权限介绍"></a>权限介绍</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android从6.0(API23)之后开始出现动态权限的管理（Run），虽然对用户来说是个不错的安全体验（控制客户端对系统隐私信息的访问），却加大了我们程序员的工作量，新的权限获取方式除了和之前一样需要在AndroidMainfest文件中静态申请外，还需要在使用的地方动态的去先用户请求授权。当然这些权限也可以再系统设置的应用管理处手动的打开和关闭。当然，并不是所有的权限都需要动态的获取，安卓系统权限分为两类，正常权限和危险权限。</p>
+<h3 id="正常权限"><a href="#正常权限" class="headerlink" title="正常权限"></a>正常权限</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正常权限不会给用户的隐私带来风险，直接在AndroidMainfest中静态申请即可（例如网络权限）,安装时系统会自动授权。这类权限包括：</p>
 <pre><code class="bash">android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
 android.permission.ACCESS_NETWORK_STATE
 android.permission.ACCESS_NOTIFICATION_POLICY
@@ -207,6 +208,106 @@ com.android.alarm.permission.SET_ALARM
 com.android.launcher.permission.INSTALL_SHORTCUT
 com.android.launcher.permission.UNINSTALL_SHORTCUT
 </code></pre>
+<h3 id="危险权限"><a href="#危险权限" class="headerlink" title="危险权限"></a>危险权限</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;危险权限会授予应用机密数据的权限，如果在应用运行时需要申请危险权限，则必须用户明确统一使用这些权限后才能进行先关操作。例如：能够读取用户的联系人属于危险权限。如果应用声明其需要危险权限，则用户必须明确明确向用户授予其权限。同一权限组下的权限，用户只要同意其中一种，同组其他权限也相应获取到。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">权限组</th>
+<th>权限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CALENDAR</td>
+<td><a href="">READ_CALENDAR</a>  <br> <a href="">WRITE_CALENDAR</a></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">CAMERA</td>
+<td><a href="">CAMERA</a></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">CONTACTS</td>
+<td><a href="">READ_CONTACTS</a>  <br> <a href="">WRITE_CONTACTS</a> <br> <a href="">GET_ACCOUNTS</a></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">LOCATION</td>
+<td><a href="">ACCESS_FINE_LOCATION</a>  <br> <a href="">ACCESS_COARSE_LOCATION</a></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">MICROPHONE</td>
+<td><a href="">RECORD_AUDIO</a></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">PHONE</td>
+<td><a href="">READ_PHONE_STATE</a>  <br> <a href="">CALL_PHONE</a>  <br> <a href="">READ_CALL_LOG</a>  <br> <a href="">WRITE_CALL_LOG</a>   <br> <a href="">ADD_VOICEMAIL</a>  <br> <a href="">USE_SIP</a>  <br> <a href="">PROCESS_OUTGOING_CALLS</a></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">SENSORS</td>
+<td><a href="">BODY_SENSORS</a></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">SMS</td>
+<td><a href="">SEND_SMS</a>  <br> <a href="">RECEIVE_SMS</a>  <br> <a href="">READ_SMS</a>  <br> <a href="">RECEIVE_WAP_PUSH</a>   <br> <a href="">RECEIVE_MMS</a></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">STORAGE</td>
+<td><a href="">READ_EXTERNAL_STORAGE</a>  <br> <a href="">WRITE_EXTERNAL_STORAGE</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="检查权限"><a href="#检查权限" class="headerlink" title="检查权限"></a>检查权限</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果您的应用需要危险权限，则每次执行需要这一权限的操作时，都需要先检查自己是否具有该权限。用户始终可以自由调用该权限，因此即使用户上次同意了使用该权限，下次也不能默认仍有该权限。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;要检查应用是否有该权限，需要调用 ContextCompat.checkSelfPermission() 方法。例如：下面这段代码用来检测Activity是否拥有调用相机的权限。</p>
+<pre><code class="bash">// Assume thisActivity is the current activity
+int permissionCheck = ContextCompat.checkSelfPermission(thisActivity,
+        Manifest.permission.CAMERA);
+</code></pre>
+<p>如果应用已有此权限，则会返回<a href="https://developer.android.com/reference/android/content/pm/PackageManager.html#PERMISSION_GRANTED" target="_blank" rel="external">PackageManager.PERMISSION_GRANTED</a>,并且应用可以继续操作。如果应用不具有此权限，方法将返回 PERMISSION_DENIED，且应用必须明确向用户要求权限。</p>
+<h3 id="请求需要的权限"><a href="#请求需要的权限" class="headerlink" title="请求需要的权限"></a>请求需要的权限</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上一步我们进行了权限的检查，如果当前应用尚未授权该权限，则需要调用一个 <a href="https://developer.android.com/reference/android/support/v4/app/ActivityCompat.html#requestPermissions(android.app.Activity, java.lang.String[], int" target="_blank" rel="external">requestPermissions()</a>) 方法，以请求适当的权限。此方法是异步执行方法。</p>
+<pre><code class="bash"><span class="keyword">if</span> (ContextCompat.checkSelfPermission(thisActivity,
+                Manifest.permission.READ_CONTACTS)
+        != PackageManager.PERMISSION_GRANTED) {
+    <span class="keyword">if</span> (ActivityCompat.shouldShowRequestPermissionRationale(thisActivity,
+            Manifest.permission.READ_CONTACTS)) {
+        //用户引导操作
+    } <span class="keyword">else</span> {
+        //权限申请
+        ActivityCompat.requestPermissions(thisActivity,
+                new String[]{Manifest.permission.READ_CONTACTS},
+                MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+    }
+}
+</code></pre>
+<h3 id="确认权限回调"><a href="#确认权限回调" class="headerlink" title="确认权限回调"></a>确认权限回调</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此步用来判断用户是否确认了权限onRequestPermissionResult ()</p>
+<pre><code class="bash">@Override
+public void onRequestPermissionsResult(int requestCode,
+        String permissions[], int[] grantResults) {
+    switch (requestCode) {
+        <span class="keyword">case</span> MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
+            // 如果结果为空，则用户取消授权
+            <span class="keyword">if</span> (grantResults.length &gt; 0
+                &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 权限申请成功，进行下一步操作
+            } <span class="keyword">else</span> {
+                // 权限申请失败，展示相关提示
+            }
+            <span class="built_in">return</span>;
+        }
+    }
+}
+</code></pre>
+<h3 id="第三方工具库"><a href="#第三方工具库" class="headerlink" title="第三方工具库"></a>第三方工具库</h3><ul>
+<li><a href="https://github.com/hotchemi/PermissionsDispatcher" target="_blank" rel="external">PermissionsDispatcher</a></li>
+<li><a href="https://github.com/yanzhenjie/AndPermission" target="_blank" rel="external">AndPermission</a></li>
+</ul>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这就是通过6.0之后版本的权限的相关总结，不管你懂没懂，这个工作在日后的开发工作中无可避免，不过如果只是简单的使用，只需要引入第三方工具库即可以非常便利的处理这类问题。</p>
 
       
 
@@ -310,6 +411,15 @@ com.android.launcher.permission.UNINSTALL_SHORTCUT
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/05/03/android-file-provider/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Android 7.0 FileProvider
+        
+      </div>
+    </a>
   
   
     <a href="/2017/04/26/develop-apps/" id="article-nav-older" class="article-nav-link-wrap">
