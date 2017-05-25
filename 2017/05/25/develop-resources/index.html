@@ -6,21 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>odoo自定义模块开发（二） | 仨儿哥的博客</title>
+  <title>开发资源整理 | 仨儿哥的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。">
+  <meta name="description" content="开发资源整理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="odoo自定义模块开发（二）">
-<meta property="og:url" content="http://yoursite.com/2017/05/24/odoo-develop-modules-2/index.html">
+<meta property="og:title" content="开发资源整理">
+<meta property="og:url" content="http://yoursite.com/2017/05/25/develop-resources/index.html">
 <meta property="og:site_name" content="仨儿哥的博客">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。">
-<meta property="og:image" content="http://yoursite.com/images/QQ截图20170524143414.png">
-<meta property="og:image" content="http://yoursite.com/images/QQ截图20170524133120.png">
-<meta property="og:updated_time" content="2017-05-24T06:47:37.729Z">
+<meta property="og:description" content="开发资源整理">
+<meta property="og:updated_time" content="2017-05-25T02:02:53.941Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="odoo自定义模块开发（二）">
-<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。">
-<meta name="twitter:image" content="http://yoursite.com/images/QQ截图20170524143414.png">
+<meta name="twitter:title" content="开发资源整理">
+<meta name="twitter:description" content="开发资源整理">
   
     <link rel="alternative" href="/atom.xml" title="仨儿哥的博客" type="application/atom+xml">
   
@@ -148,86 +145,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-odoo-develop-modules-2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-develop-resources" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      odoo自定义模块开发（二）
+      开发资源整理
     </h1>
   
 
         
-        <a href="/2017/05/24/odoo-develop-modules-2/" class="archive-article-date">
-  	<time datetime="2017-05-24T05:20:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-24</time>
+        <a href="/2017/05/25/develop-resources/" class="archive-article-date">
+  	<time datetime="2017-05-25T01:23:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。</p>
+        <p>开发资源整理</p>
 <a id="more"></a>
-<h3 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h3><p>ORM是odoo中一个关键的模块，这个模块避免了我们在使用过程中过多的添加SQL语句，并且提供了非常好的延展性和安全服务。我们可以在models中声明业务对象。声明方式如下。</p>
-<pre><code class="bash">from odoo import models, fields, api
-
-class Course(models.Model):
-    _name = <span class="string">'openacademy.course'</span>
-
-    name = fields.Char(string=<span class="string">"Title"</span>, required=True)
-    description = fields.Text()
-</code></pre>
-<p>和model自身的配置同理，model也可通过参数来添加相关属性。</p>
-<ul>
-<li>_name      数据表名</li>
-<li>string (unicode, default: field’s name)  在界面上展示的名字</li>
-<li>required (bool, default: False)          如果为True，则在添加新的记录时，此项必须有默认值，不能为空。</li>
-<li>help (unicode, default: ‘’)              界面上的提示信息。</li>
-<li>index (bool, default: False)             是否创建数据索引。</li>
-</ul>
-<p>数据类型：</p>
-<ul>
-<li>fields.Char()       字符串</li>
-<li>fields.Boolean()    布尔值</li>
-<li>fields.Integer()    整数</li>
-<li>fields.Float()      浮点数值</li>
-<li>fields.Text()       文本类型</li>
-<li>fields.Selection()  分段选择</li>
-<li>fields.Date()       日期</li>
-<li>…</li>
-</ul>
-<p>添加上述代码，重启服务器，更新客户端版本，刷新数据库就能看到course表，包括name和description属性。</p>
-<p><img src="/images/QQ截图20170524143414.png" alt="logo" style="border:1px solid black"></p>
-<p>我们会看到，除了我们自定义的一些相关属性，odoo会默认给我们添加一些保留属性。</p>
-<ul>
-<li>id             记录唯一标识ID</li>
-<li>create_date (Datetime)     创建日期</li>
-<li>create_uid  (Many2one)     创建人</li>
-<li>write_date  (Datetime)     最后修改日期</li>
-<li>write_uid   (Many2one)     修改人</li>
-</ul>
-<h3 id="动作和菜单"><a href="#动作和菜单" class="headerlink" title="动作和菜单"></a>动作和菜单</h3><p>我们要针对我们新建的模块有相关操作，必须有相关的操作菜单。odoo中的菜单和操作都保存在数据库中。<br>在odoo中我们通过添加<menuitem>标签项来添加菜单项。<menuitem>标签包含以下属性：</menuitem></menuitem></p>
-<ul>
-<li>id      菜单对应id，用来做唯一性验证</li>
-<li>parent  关联多级菜单，用来呈现父子关系。</li>
-<li>name    菜单显示名称。</li>
-<li>sequence    显示优先级（排序）。</li>
-<li>action    关联操作。</li>
-</ul>
-<font color="#993300" size="4" face="黑体">注：action必须要在menuitem之前声明。</font>
-
-
-<pre><code class="bash">&lt;!-- Top menu item --&gt;
-&lt;menuitem name=<span class="string">"openacademy"</span> id=<span class="string">"openacademy.menu_root"</span>/&gt;
-&lt;!-- menu categories --&gt;
-&lt;menuitem name=<span class="string">"course"</span> id=<span class="string">"openacademy.menu_1"</span> parent=<span class="string">"openacademy.menu_root"</span>/&gt;
-&lt;menuitem name=<span class="string">"session"</span> id=<span class="string">"openacademy.menu_2"</span> parent=<span class="string">"openacademy.menu_root"</span>/&gt;
-</code></pre>
-<p> 上述代码就构建了我们的一级菜单，如下图所示（经过汉化后的展示），此时我们只是添加了相关菜单，并未关联Action，点击没有任何操作。<br><br><img src="/images/QQ截图20170524133120.png" alt="logo"></p>
-<p>有了菜单，我们需要添加对应的action，</p>
-<h3 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h3>
+<html><br><head><br> <meta charset="UTF-8"><br><title>公益404</title><br></head><br><body><br><h1>404 Page Not Found</h1><br><br><br><br><br></body><br></html>
       
 
       
@@ -256,17 +196,6 @@ class Course(models.Model):
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">odoo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -317,7 +246,7 @@ class Course(models.Model):
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/24/odoo-develop-modules-2/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/25/develop-resources/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -331,18 +260,18 @@ class Course(models.Model):
   
 <nav id="article-nav">
   
-    <a href="/2017/05/25/develop-resources/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/25/develop-android-proguard/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          开发资源整理
+          Android 代码混淆
         
       </div>
     </a>
   
   
-    <a href="/2017/05/23/odoo-develop-modules/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">odoo自定义模块开发（一）</div>
+    <a href="/2017/05/24/odoo-develop-modules-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">odoo自定义模块开发（二）</div>
       <i class="icon-circle-right"></i>
     </a>
   
