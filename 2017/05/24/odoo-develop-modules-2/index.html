@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>odoo自定义模块开发（二） | 仨儿哥的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。">
+  <meta name="description" content="上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="odoo自定义模块开发（二）">
 <meta property="og:url" content="http://yoursite.com/2017/05/24/odoo-develop-modules-2/index.html">
 <meta property="og:site_name" content="仨儿哥的博客">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。">
+<meta property="og:description" content="上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。">
 <meta property="og:image" content="http://yoursite.com/images/QQ截图20170524143414.png">
 <meta property="og:image" content="http://yoursite.com/images/QQ截图20170524133120.png">
-<meta property="og:updated_time" content="2017-05-24T06:47:37.729Z">
+<meta property="og:updated_time" content="2017-05-25T07:24:05.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="odoo自定义模块开发（二）">
-<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。">
+<meta name="twitter:description" content="上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。">
 <meta name="twitter:image" content="http://yoursite.com/images/QQ截图20170524143414.png">
   
     <link rel="alternative" href="/atom.xml" title="仨儿哥的博客" type="application/atom+xml">
@@ -168,7 +168,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。</p>
+        <p>上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。</p>
 <a id="more"></a>
 <h3 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h3><p>ORM是odoo中一个关键的模块，这个模块避免了我们在使用过程中过多的添加SQL语句，并且提供了非常好的延展性和安全服务。我们可以在models中声明业务对象。声明方式如下。</p>
 <pre><code class="bash">from odoo import models, fields, api
@@ -227,7 +227,31 @@ class Course(models.Model):
 </code></pre>
 <p> 上述代码就构建了我们的一级菜单，如下图所示（经过汉化后的展示），此时我们只是添加了相关菜单，并未关联Action，点击没有任何操作。<br><br><img src="/images/QQ截图20170524133120.png" alt="logo"></p>
 <p>有了菜单，我们需要添加对应的action，</p>
-<h3 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h3>
+<h3 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h3><p>odoo是一个高度的数据驱动系统。虽然动作通过Python代码来定制，系统会在加载时保存一些数据。我们通过在demo/demo.xml中添加下述记录。</p>
+<pre><code class="bash">&lt;odoo&gt;
+    &lt;data&gt;
+        &lt;record model=<span class="string">"{model name}"</span> id=<span class="string">"{record identifier}"</span>&gt;
+            &lt;field name=<span class="string">"{a field name}"</span>&gt;{a value}&lt;/field&gt;
+        &lt;/record&gt;
+    &lt;/data&gt;
+&lt;/odoo&gt;
+</code></pre>
+<ul>
+<li>model 数据表名称</li>
+<li>id  是一个扩展的ID，它允许关联到记录（不必了解数据库中的ID）</li>
+<li><field>  对应的元素名称和值</field></li>
+</ul>
+<h3 id="模型关联"><a href="#模型关联" class="headerlink" title="模型关联"></a>模型关联</h3><p>我们的数据都具有相关性，例如：一个销售订单记录会关联到一条客户记录。模型包含以下三种关系。</p>
+<ul>
+<li>Many2one(other_model, ondelete=’set null’)</li>
+<li>One2many(other_model, related_field)</li>
+<li>Many2many(other_model)</li>
+</ul>
+<p>代码如下</p>
+<pre><code class="bash">responsible_id = fields.Many2one(<span class="string">'res.users'</span>,
+        ondelete=<span class="string">'set null'</span>, string=<span class="string">"Responsible"</span>, index=True)
+</code></pre>
+
       
 
       
@@ -442,11 +466,15 @@ class Course(models.Model):
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">读书</a>
+                <a href="javascript:void(0)" class="js-tag color2">kotlin</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">

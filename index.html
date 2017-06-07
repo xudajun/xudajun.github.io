@@ -146,6 +146,228 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-develop-kotlin-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/28/develop-kotlin-2/">kotlin学习记录（二）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/28/develop-kotlin-2/" class="archive-article-date">
+  	<time datetime="2017-05-28T08:38:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一篇文章主要讲解了在Android Studio中来配置kotlin环境。本篇文章来记录一些kotlin使用的基础语法。</p>
+        
+          <a class="article-more-a" href="/2017/05/28/develop-kotlin-2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kotlin</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/28/develop-kotlin-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-develop-kotlin-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/28/develop-kotlin-1/">kotlin学习记录（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/28/develop-kotlin-1/" class="archive-article-date">
+  	<time datetime="2017-05-28T05:41:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上周的Google开发者大会上，Google宣布kotlin为Android开发的首选语言，而作为一个技术人员，我们需要紧跟前沿，才能保持自身的竞争力。</p>
+        
+          <a class="article-more-a" href="/2017/05/28/develop-kotlin-1/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kotlin</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/28/develop-kotlin-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-android-develop-kotlin-databinding" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/27/android-develop-kotlin-databinding/">Android kotlin Databinding 配置</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/27/android-develop-kotlin-databinding/" class="archive-article-date">
+  	<time datetime="2017-05-27T08:02:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code class="bash">apply plugin: <span class="string">'com.android.application'</span>
+apply plugin: <span class="string">'kotlin-android'</span>
+apply plugin: <span class="string">'kotlin-android-extensions'</span>
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion <span class="string">"25.0.2"</span>
+    defaultConfig {
+        applicationId <span class="string">"com.xxx"</span>
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName <span class="string">"1.0"</span>
+        <span class="built_in">test</span>InstrumentationRunner <span class="string">"android.support.test.runner.AndroidJUnitRunner"</span>
+    }
+    buildTypes {
+        release {
+            minifyEnabled <span class="literal">false</span>
+            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span>
+        }
+    }
+    dataBinding {
+        enabled = <span class="literal">true</span>
+    }
+}
+
+dependencies {
+    compile fileTree(dir: <span class="string">'libs'</span>, include: [<span class="string">'*.jar'</span>])
+    androidTestCompile(<span class="string">'com.android.support.test.espresso:espresso-core:2.2.2'</span>, {
+        exclude group: <span class="string">'com.android.support'</span>, module: <span class="string">'support-annotations'</span>
+    })
+    compile <span class="string">"org.jetbrains.kotlin:kotlin-stdlib-jre7:<span class="variable">$kotlin_version</span>"</span>
+    compile <span class="string">'com.android.support:appcompat-v7:25.1.0'</span>
+    compile <span class="string">'com.android.support.constraint:constraint-layout:1.0.2'</span>
+    <span class="built_in">test</span>Compile <span class="string">'junit:junit:4.12'</span>
+    kapt <span class="string">'com.android.databinding:compiler:2.3.0'</span>
+}
+repositories {
+    mavenCentral()
+}
+kapt {
+    generateStubs = <span class="literal">true</span>
+}
+</code></pre>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/27/android-develop-kotlin-databinding/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-develop-android-proguard" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -283,7 +505,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。</p>
+        <p>上篇文章我们介绍了，自定义模块的构建添加，本篇来介绍基础视图内容和数据的添加。</p>
         
           <a class="article-more-a" href="/2017/05/24/odoo-develop-modules-2/#more">more >></a>
         
@@ -572,198 +794,6 @@
 
 
   
-    <article id="post-develop-resource-ios-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/25/develop-resource-ios-1/">开发资源整理IOS篇（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/25/develop-resource-ios-1/" class="archive-article-date">
-  	<time datetime="2017-04-25T07:51:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>此文章用来记录工作学习中使用或者效果比较好的控件</p>
-        
-          <a class="article-more-a" href="/2017/04/25/develop-resource-ios-1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IOS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/25/develop-resource-ios-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-book-read-txz" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/19/book-read-txz/">《腾讯传》</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/19/book-read-txz/" class="archive-article-date">
-  	<time datetime="2017-04-19T07:16:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近刚读玩吴晓波先生写的《腾讯传》，感触良多。<br>
-        
-          <a class="article-more-a" href="/2017/04/19/book-read-txz/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">读书</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/19/book-read-txz/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-develop-resouce-android-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/14/develop-resouce-android-4/">开发资源整理Android篇（四）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/14/develop-resouce-android-4/" class="archive-article-date">
-  	<time datetime="2017-04-14T05:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>此文章用来记录工作学习中使用或者效果比较好的文章</p>
-        
-          <a class="article-more-a" href="/2017/04/14/develop-resouce-android-4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/14/develop-resouce-android-4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -853,11 +883,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">读书</a>
+                <a href="javascript:void(0)" class="js-tag color2">kotlin</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">IOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">
